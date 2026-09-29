@@ -3,7 +3,7 @@ datasources:
   - name: prometheus
     type: prometheus
     access: proxy
-    url: http://localhost:9090
+    url: http://host.containers.internal:9090
     isDefault: true
     editable: true
 

@@ -1,0 +1,14 @@
+[Unit]
+Description=Node Exporter
+After=network-online.target
+
+[Container]
+Image=docker.io/prom/node-exporter:v1.12.1
+Volume=/:/host:ro,rslave
+Network=host
+SecurityLabelDisable=true
+PodmanArgs=--pid=host
+Exec=--path.rootfs=/host
+
+[Install]
+WantedBy=multi-user.target

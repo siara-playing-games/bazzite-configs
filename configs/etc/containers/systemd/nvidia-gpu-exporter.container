@@ -1,0 +1,13 @@
+[Unit]
+Description=Nvidia GPU Exporter
+After=network-online.target
+
+[Container]
+Image=ghcr.io/utkuozdemir/nvidia_gpu_exporter:1.15.1-nvml
+Network=host
+AddDevice=nvidia.com/gpu=all
+SecurityLabelDisable=true
+
+[Install]
+WantedBy=multi-user.target
+

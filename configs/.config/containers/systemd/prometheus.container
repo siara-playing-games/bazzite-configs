@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus
+After=network-online.target
+
+[Container]
+Image=docker.io/prom/prometheus:v3.15.0
+AddHost=host.containers.internal:host-gateway
+PublishPort=9090:9090
+
+Volume=prometheus-storage:/prometheus:Z
+Volume=%h/.config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro,Z
+
+[Install]
+WantedBy=default.target

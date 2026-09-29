@@ -4,17 +4,12 @@ After=network-online.target
 
 [Container]
 Image=docker.io/grafana/grafana:13.2.2
+AddHost=host.containers.internal:host-gateway
 PublishPort=3000:3000
 
 Volume=grafana-storage:/var/lib/grafana:Z
-
 Volume=%h/.config/grafana/provisioning:/etc/grafana/provisioning:ro,Z
-
 Volume=%h/.config/grafana/dashboards:/var/lib/grafana/dashboards:ro,Z
-
-[Service]
-Restart=always
-TimeoutStartSec=900
 
 [Install]
 WantedBy=default.target
